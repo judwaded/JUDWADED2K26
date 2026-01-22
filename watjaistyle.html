@@ -196,6 +196,61 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* --- STYLES FOR HOME BUTTON (EDITED) --- */
+        .home-icon-btn {
+            position: fixed; /* ลอยอยู่ติดหน้าจอเสมอ */
+            top: 20px;
+            right: 20px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            width: 50px;
+            height: 50px;
+            
+            /* Default Dark Mode Color */
+            background-color: #333; 
+            color: white;
+            
+            border-radius: 50%; /* ทำเป็นวงกลม */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* เงา */
+            transition: all 0.3s ease;
+            z-index: 1001; /* อยู่เหนือ Fire Effect และองค์ประกอบอื่นๆ */
+        }
+
+        /* Light Mode Specific Style */
+        .light-mode .home-icon-btn {
+            background-color: #ffffff;
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .home-icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hover Effect for Dark Mode (background turns white) */
+        body:not(.light-mode) .home-icon-btn:hover {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* Hover Effect for Light Mode (background turns black) */
+        .light-mode .home-icon-btn:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .home-icon-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        /* --------------------------- */
+
         /* --- New Mobile & Responsive Fixes --- */
         @media (max-width: 850px) {
             .footer-container-centered {
@@ -255,6 +310,11 @@
 </head>
 <body>
 
+    <a href="index.html" class="home-icon-btn" aria-label="กลับหน้าแรก">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+    </a>
     <div id="fire-container"></div>
 
     <audio id="bgMusic" loop>
