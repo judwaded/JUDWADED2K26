@@ -196,9 +196,8 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* --- STYLES FOR HOME BUTTON (EDITED) --- */
         .home-icon-btn {
-            position: fixed; /* ลอยอยู่ติดหน้าจอเสมอ */
+            position: fixed; 
             top: 20px;
             right: 20px;
             
@@ -209,18 +208,16 @@
             width: 50px;
             height: 50px;
             
-            /* Default Dark Mode Color */
             background-color: #333; 
             color: white;
             
-            border-radius: 50%; /* ทำเป็นวงกลม */
+            border-radius: 50%; 
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* เงา */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
             transition: all 0.3s ease;
-            z-index: 1001; /* อยู่เหนือ Fire Effect และองค์ประกอบอื่นๆ */
+            z-index: 1001; 
         }
 
-        /* Light Mode Specific Style */
         .light-mode .home-icon-btn {
             background-color: #ffffff;
             color: #000000;
@@ -232,13 +229,11 @@
             transform: scale(1.1);
         }
 
-        /* Hover Effect for Dark Mode (background turns white) */
         body:not(.light-mode) .home-icon-btn:hover {
             background-color: #ffffff;
             color: #333;
         }
 
-        /* Hover Effect for Light Mode (background turns black) */
         .light-mode .home-icon-btn:hover {
             background-color: #000000;
             color: #ffffff;
@@ -249,9 +244,7 @@
             height: 24px;
             fill: currentColor;
         }
-        /* --------------------------- */
 
-        /* --- New Mobile & Responsive Fixes --- */
         @media (max-width: 850px) {
             .footer-container-centered {
                 flex-direction: column;
