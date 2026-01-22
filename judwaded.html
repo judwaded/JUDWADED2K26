@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUDWADED 2K26</title>
-    <link rel="icon" type="image/x-icon" href="https://img2.pic.in.th/Logo_JUDWADED-2.png">
+    <link rel="icon" type="image/x-icon" href="Logo_JUDWADED.ico">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -201,6 +201,61 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* --- STYLES FOR HOME BUTTON (FIXED) --- */
+        .home-icon-btn {
+            position: fixed; /* ลอยอยู่ติดหน้าจอเสมอ */
+            top: 20px;
+            right: 20px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            width: 50px;
+            height: 50px;
+            
+            /* Default Dark Mode */
+            background-color: #333; 
+            color: white;
+            
+            border-radius: 50%; 
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            transition: all 0.3s ease;
+            z-index: 1001; 
+        }
+
+        /* Light Mode Specific Style */
+        .light-mode .home-icon-btn {
+            background-color: #ffffff;
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .home-icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hover Effect for Dark Mode */
+        body:not(.light-mode) .home-icon-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Hover Effect for Light Mode */
+        .light-mode .home-icon-btn:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .home-icon-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        /* --------------------------- */
+
         @media (max-width: 850px) {
             .footer-container-centered {
                 flex-direction: column;
@@ -253,6 +308,12 @@
     </style>
 </head>
 <body>
+
+    <a href="index.html" class="home-icon-btn" aria-label="กลับหน้าแรก">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+    </a>
 
     <div id="fire-container"></div>
 
@@ -574,5 +635,3 @@
     </script>
 </body>
 </html>
-
-
