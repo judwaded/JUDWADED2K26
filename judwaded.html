@@ -201,9 +201,8 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* --- STYLES FOR HOME BUTTON (FIXED) --- */
         .home-icon-btn {
-            position: fixed; /* ลอยอยู่ติดหน้าจอเสมอ */
+            position: fixed;
             top: 20px;
             right: 20px;
             
@@ -214,7 +213,6 @@
             width: 50px;
             height: 50px;
             
-            /* Default Dark Mode */
             background-color: #333; 
             color: white;
             
@@ -225,7 +223,6 @@
             z-index: 1001; 
         }
 
-        /* Light Mode Specific Style */
         .light-mode .home-icon-btn {
             background-color: #ffffff;
             color: #000000;
@@ -237,13 +234,11 @@
             transform: scale(1.1);
         }
 
-        /* Hover Effect for Dark Mode */
         body:not(.light-mode) .home-icon-btn:hover {
             background-color: #ffffff;
             color: #000000;
         }
 
-        /* Hover Effect for Light Mode */
         .light-mode .home-icon-btn:hover {
             background-color: #000000;
             color: #ffffff;
@@ -254,7 +249,6 @@
             height: 24px;
             fill: currentColor;
         }
-        /* --------------------------- */
 
         @media (max-width: 850px) {
             .footer-container-centered {
