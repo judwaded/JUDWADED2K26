@@ -57,6 +57,11 @@
             box-sizing: border-box;
         }
 
+        .header-section { 
+            flex: 1; 
+            padding-left: 150px; 
+        }
+
         @media (max-width: 1100px) { 
             .content-wrapper { 
                 flex-direction: column; 
@@ -67,6 +72,7 @@
             .header-section { 
                 margin-top: 20px;
                 margin-bottom: 50px;
+                padding-left: 0;
                 flex: none; 
                 width: 100%;
                 min-width: auto; 
@@ -79,10 +85,6 @@
             }
         }
 
-        .header-section { 
-            flex: 1; 
-        }
-
         .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; }
         .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 0.9; }
         .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
@@ -90,19 +92,18 @@
         .center-box {
             width: 90%;
             max-width: 700px; 
-            /* ลบ min-height ออกเพื่อให้กล่องยืดตามเนื้อหา */
             background: var(--bar-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--bar-border);
             border-radius: 35px;
             display: flex;
-            flex-direction: column; /* จัดเรียงแนวตั้ง */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
             box-shadow: 0 40px 80px rgba(0,0,0,0.6);
             z-index: 20;
-            padding: 40px 30px; /* เพิ่ม padding */
+            padding: 40px 30px; 
             box-sizing: border-box;
         }
 
@@ -126,7 +127,6 @@
             justify-content: center;
         }
 
-        /* --- ปุ่มสไตล์ 3D --- */
         .btn {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -170,12 +170,11 @@
             max-width: 100%; 
         }
 
-        /* --- Footer Styles (อัปเดตใหม่ตามรูป) --- */
         .footer-divider {
             width: 100%;
             max-width: 450px;
             height: 1px;
-            background: rgba(255, 255, 255, 0.1); /* เส้นคั่นบางๆ */
+            background: rgba(255, 255, 255, 0.1); 
             margin: 35px 0 20px 0;
         }
 
@@ -191,10 +190,11 @@
             display: flex;
             justify-content: center;
             gap: 30px;
+            flex-wrap: wrap;
         }
 
         .footer-link-item {
-            color: #aaa; /* สีเทาอ่อน */
+            color: #aaa; 
             font-size: 13px;
             font-weight: 500;
             text-decoration: none;
@@ -204,17 +204,16 @@
         }
 
         .footer-link-item:hover {
-            color: #fff; /* ชี้แล้วขาว */
+            color: #fff; 
         }
 
         .copyright-txt {
-            color: #666; /* สีเทาเข้มสำหรับ copyright */
+            color: #666; 
             font-size: 12px;
             margin: 0;
             font-family: 'Inter', sans-serif;
             letter-spacing: 0.5px;
         }
-        /* ------------------------------------- */
 
         @media (max-width: 400px) {
             .btn { font-size: 15px; padding: 15px 10px; }
@@ -254,8 +253,9 @@
 
                 <div class="footer-mini-section">
                     <div class="footer-links-row">
+                        <a href="https://www.facebook.com/jesper.watsutjai" class="footer-link-item">WATJAISTYLE Support</a>
                         <a href="https://www.facebook.com/Shinchanxx" class="footer-link-item">General Support</a>
-                        <a href="https://www.facebook.com/SeereWairaibxy" class="footer-link-item">Main Contact</a>
+                        <a href="Privacypolicy.html" class="footer-link-item">Privacy Policy</a>
                     </div>
                     <p class="copyright-txt">© 2026 JUDWADED 2K26. All rights reserved.</p>
                 </div>
