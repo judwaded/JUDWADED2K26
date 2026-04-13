@@ -10,15 +10,13 @@
 
     <style>
         :root {
-            /* ปรับโทนสีเป็นสีน้ำและสีสงกรานต์ */
+            /* โทนสีสงกรานต์: ฟ้าคราม และเหลืองดินสอพอง */
             --bg-gradient: linear-gradient(135deg, #00b4db, #0083b0);
             --text-color: #ffffff;
             --sub-text: #e0f7fa;
             --bar-bg: rgba(255, 255, 255, 0.2);
             --bar-border: rgba(255, 255, 255, 0.4);
-            --accent-color: #ffeb3b; /* สีเหลืองดินสอพอง */
-            --active-bg: #ffffff;
-            --active-text: #0083b0;
+            --accent-color: #ffeb3b; 
             --water-color: #ffffff;
         }
 
@@ -30,11 +28,10 @@
             min-height: 100vh;
             font-family: 'Prompt', 'Inter', sans-serif;
             color: var(--text-color);
-            transition: all 0.3s ease;
             overflow-x: hidden; 
         }
 
-        /* Water Drop Animation (แทนที่ไฟ) */
+        /* เอฟเฟกต์หยดน้ำร่วงลงมา */
         #water-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
         .drop { position: absolute; top: -50px; background: rgba(255, 255, 255, 0.6); border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: fall linear infinite; }
         @keyframes fall { 0% { transform: translateY(0) rotate(45deg); opacity: 0.7; } 100% { transform: translateY(110vh) rotate(45deg); opacity: 0; } }
@@ -58,27 +55,16 @@
             box-sizing: border-box;
         }
 
-        @media (max-width: 1100px) { 
-            .content-wrapper { 
-                flex-direction: column; 
-                text-align: center;
-                justify-content: center !important;
-            }
-            .header-section { margin-bottom: 30px; flex: none; width: 100%; }
-            .center-box { width: 100% !important; max-width: 600px; height: auto !important; padding: 40px 20px; }
-        }
-
         .header-section { flex: 1; }
 
-        /* ปรับฟอนต์ให้ดูสนุกขึ้น */
         .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; text-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
         .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 0.9; color: var(--accent-color); }
         .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; background: rgba(0,0,0,0.1); display: inline-block; padding: 5px 15px; border-radius: 20px; }
 
+        /* กล่องกลาง */
         .center-box {
-            width: 90%;
-            max-width: 700px; 
-            min-height: 350px; 
+            width: 100%;
+            max-width: 600px; 
             background: var(--bar-bg);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -88,63 +74,72 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            z-index: 20;
-            padding: 30px;
+            padding: 40px;
             box-sizing: border-box;
         }
 
+        /* การจัดการปุ่มให้เท่ากันเป๊ะ */
         .button-group {
             display: flex;
             flex-direction: column;
-            gap: 20px; 
+            gap: 15px; 
             width: 100%;
-            max-width: 500px;
         }
 
         .top-row {
             display: flex;
-            justify-content: center;
             gap: 15px; 
-            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .bottom-row {
+            width: 100%;
         }
 
         .btn {
             background: #ffffff;
             border: none;
             color: #0083b0;
-            padding: 18px 20px;
+            padding: 18px 10px;
             font-family: 'Prompt', sans-serif;
             font-size: 16px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
             border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            flex: 1; 
-            min-width: 140px; 
+            transition: all 0.3s ease;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
+            display: block;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            flex: 1; /* บังคับให้ปุ่มในแถวเดียวกันกว้างเท่ากัน */
         }
 
         .btn:hover {
             background: var(--accent-color);
             color: #000;
-            transform: scale(1.05) rotate(-2deg);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
+        /* ปุ่มแถวล่าง (สีชมพู) */
         .btn-large {
             width: 100%;
-            background: #ff4081; /* สีชมพูสดใส */
+            background: #ff4081; 
             color: white;
+            margin-top: 5px;
         }
 
-        @media (max-width: 400px) {
-            .btn { font-size: 14px; padding: 15px 10px; }
-            .text-brand { font-size: 45px; }
+        @media (max-width: 1100px) { 
+            .content-wrapper { flex-direction: column; text-align: center; justify-content: center; }
+            .header-section { margin-bottom: 30px; }
+            .center-box { padding: 30px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .top-row { flex-direction: column; } /* บนมือถือให้ปุ่มเรียงแถวเดี่ยว */
+            .text-brand { font-size: 50px; }
         }
     </style>
 </head>
@@ -162,7 +157,7 @@
             <header class="header-section">
                 <h1 class="text-brand">SONGKRAN</h1>
                 <h2 class="text-year">JUDWADED 2K26</h2>
-                <div class="status-bar">💦 สาดความสนุก // จัดเต็มทุกระบบ 💦</div>
+                <div class="status-bar">💦 HAPPY SONGKRAN FESTIVAL 💦</div>
             </header>
 
             <div class="center-box">
@@ -185,9 +180,7 @@
         audio.volume = 0.5; 
 
         function startMusic() {
-            audio.play().catch(function(error) {
-                console.log("Autoplay blocked");
-            });
+            audio.play().catch(e => console.log("Audio play blocked"));
             document.removeEventListener('click', startMusic);
             document.removeEventListener('touchstart', startMusic);
         }
@@ -195,21 +188,18 @@
         document.addEventListener('click', startMusic);
         document.addEventListener('touchstart', startMusic);
 
-        // ฟังก์ชันสร้างหยดน้ำ
+        // สร้างหยดน้ำร่วงลงมา
         function createDrops() {
             const container = document.getElementById('water-container');
-            const dropCount = 40; 
-            for (let i = 0; i < dropCount; i++) {
+            for (let i = 0; i < 35; i++) {
                 const drop = document.createElement('div');
                 drop.className = 'drop';
-                const size = Math.random() * 8 + 4 + 'px';
+                const size = Math.random() * 7 + 3 + 'px';
                 drop.style.width = size;
                 drop.style.height = size;
                 drop.style.left = Math.random() * 100 + 'vw';
-                const duration = Math.random() * 2 + 1 + 's';
-                const delay = Math.random() * 5 + 's';
-                drop.style.animationDuration = duration;
-                drop.style.animationDelay = delay;
+                drop.style.animationDuration = Math.random() * 2 + 1.5 + 's';
+                drop.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(drop);
             }
         }
