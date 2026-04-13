@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUDWADED 2K26</title>
+    <title>JUDWADED 2K26 - SONGKRAN EDITION</title>
     <link rel="icon" type="image/x-icon" href="Logo_JUDWADED.ico">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@900&family=Rajdhani:wght@500&family=Prompt:wght@600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-gradient: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.96));
+            /* ปรับโทนสีเป็นสีน้ำและสีสงกรานต์ */
+            --bg-gradient: linear-gradient(135deg, #00b4db, #0083b0);
             --text-color: #ffffff;
-            --sub-text: #888;
-            --bar-bg: rgba(255, 255, 255, 0.07);
-            --bar-border: rgba(255, 255, 255, 0.12);
-            --accent-color: #ffffff;
+            --sub-text: #e0f7fa;
+            --bar-bg: rgba(255, 255, 255, 0.2);
+            --bar-border: rgba(255, 255, 255, 0.4);
+            --accent-color: #ffeb3b; /* สีเหลืองดินสอพอง */
             --active-bg: #ffffff;
-            --active-text: #000000;
-            --fire-color: #ffffff;
+            --active-text: #0083b0;
+            --water-color: #ffffff;
         }
 
         body {
-            background: var(--bg-gradient), url('https://img2.pic.in.th/Logo_JUDWADED.png');
+            background: var(--bg-gradient);
             background-size: cover;
-            background-position: center top; 
             background-attachment: fixed;
             margin: 0;
             min-height: 100vh;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Prompt', 'Inter', sans-serif;
             color: var(--text-color);
             transition: all 0.3s ease;
             overflow-x: hidden; 
         }
 
-        #fire-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .particle { position: absolute; bottom: -20px; background: var(--fire-color); border-radius: 50%; filter: blur(1px); opacity: 0.8; box-shadow: 0 0 10px var(--fire-color); animation: rise linear infinite; }
-        @keyframes rise { 0% { transform: translateY(0) translateX(0); opacity: 0.8; } 50% { transform: translateY(-50vh) translateX(20px); opacity: 0.5; } 100% { transform: translateY(-100vh) translateX(-20px); opacity: 0; } }
+        /* Water Drop Animation (แทนที่ไฟ) */
+        #water-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .drop { position: absolute; top: -50px; background: rgba(255, 255, 255, 0.6); border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: fall linear infinite; }
+        @keyframes fall { 0% { transform: translateY(0) rotate(45deg); opacity: 0.7; } 100% { transform: translateY(110vh) rotate(45deg); opacity: 0; } }
 
         .main-container { 
             max-width: 1800px; 
@@ -57,60 +58,45 @@
             box-sizing: border-box;
         }
 
-        .header-section { 
-            flex: 1; 
-            padding-left: 150px; 
-        }
-
         @media (max-width: 1100px) { 
             .content-wrapper { 
                 flex-direction: column; 
                 text-align: center;
-                justify-content: flex-start !important;
-                padding-top: 15vh;
+                justify-content: center !important;
             }
-            .header-section { 
-                margin-top: 20px;
-                margin-bottom: 50px;
-                padding-left: 0;
-                flex: none; 
-                width: 100%;
-                min-width: auto; 
-            }
-            .center-box { 
-                width: 100% !important; 
-                max-width: 600px; 
-                height: auto !important; 
-                padding: 40px 20px; 
-            }
+            .header-section { margin-bottom: 30px; flex: none; width: 100%; }
+            .center-box { width: 100% !important; max-width: 600px; height: auto !important; padding: 40px 20px; }
         }
 
-        .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; }
-        .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 0.9; }
-        .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+        .header-section { flex: 1; }
+
+        /* ปรับฟอนต์ให้ดูสนุกขึ้น */
+        .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; text-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+        .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 0.9; color: var(--accent-color); }
+        .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; background: rgba(0,0,0,0.1); display: inline-block; padding: 5px 15px; border-radius: 20px; }
 
         .center-box {
             width: 90%;
             max-width: 700px; 
+            min-height: 350px; 
             background: var(--bar-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--bar-border);
-            border-radius: 35px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid var(--bar-border);
+            border-radius: 40px;
             display: flex;
-            flex-direction: column; 
             justify-content: center;
             align-items: center;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
             z-index: 20;
-            padding: 40px 30px; 
+            padding: 30px;
             box-sizing: border-box;
         }
 
         .button-group {
             display: flex;
             flex-direction: column;
-            gap: 25px; 
+            gap: 20px; 
             width: 100%;
             max-width: 500px;
         }
@@ -122,101 +108,42 @@
             flex-wrap: wrap;
         }
 
-        .bottom-row {
-            display: flex;
-            justify-content: center;
-        }
-
         .btn {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-bottom: 4px solid rgba(255, 255, 255, 0.15); 
-            color: white;
-            padding: 20px 25px;
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 18px;
-            font-weight: 900; 
+            background: #ffffff;
+            border: none;
+            color: #0083b0;
+            padding: 18px 20px;
+            font-family: 'Prompt', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 12px;
+            letter-spacing: 1px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             flex: 1; 
             min-width: 140px; 
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 5px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .btn:hover {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 230, 1) 100%);
-            color: black;
-            border-bottom: 4px solid rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
-            text-shadow: none;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 10px 20px rgba(0,0,0,0.5);
-        }
-        
-        .btn:active {
-            transform: translateY(2px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+            background: var(--accent-color);
+            color: #000;
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .btn-large {
             width: 100%;
-            max-width: 100%; 
-        }
-
-        .footer-divider {
-            width: 100%;
-            max-width: 450px;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1); 
-            margin: 35px 0 20px 0;
-        }
-
-        .footer-mini-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .footer-links-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-link-item {
-            color: #aaa; 
-            font-size: 13px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-link-item:hover {
-            color: #fff; 
-        }
-
-        .copyright-txt {
-            color: #666; 
-            font-size: 12px;
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.5px;
+            background: #ff4081; /* สีชมพูสดใส */
+            color: white;
         }
 
         @media (max-width: 400px) {
-            .btn { font-size: 15px; padding: 15px 10px; }
+            .btn { font-size: 14px; padding: 15px 10px; }
             .text-brand { font-size: 45px; }
         }
     </style>
@@ -227,36 +154,26 @@
         <source src="FOXX.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="fire-container"></div>
+    <div id="water-container"></div>
 
     <div class="main-container">
         <div class="content-wrapper">
             
             <header class="header-section">
-                <h1 class="text-brand">JUDWADED</h1>
-                <h2 class="text-year">2K26</h2>
-                <div class="status-bar">WAIRAIBXY // WATJAISTYLE </div>
+                <h1 class="text-brand">SONGKRAN</h1>
+                <h2 class="text-year">JUDWADED 2K26</h2>
+                <div class="status-bar">💦 สาดความสนุก // จัดเต็มระบบ 💦</div>
             </header>
 
             <div class="center-box">
                 <div class="button-group">
                     <div class="top-row">
-                        <a href="judwaded.html" class="btn">JUDWADED</a>
-                        <a href="Z2F.html" class="btn">Z2F</a>
+                        <a href="judwaded.html" class="btn">เล่นน้ำ</a>
+                        <a href="#" class="btn">WAIRAIBXY</a>
                     </div>
                     <div class="bottom-row">
-                        <a href="watjaistyle.html" class="btn btn-large">WATJAISTYLE</a>
+                        <a href="watjaistyle.html" class="btn btn-large">WATJAISTYLE (ON FIRE)</a>
                     </div>
-                </div>
-
-                <div class="footer-divider"></div>
-
-                <div class="footer-mini-section">
-                    <div class="footer-links-row">
-                        <a href="https://www.facebook.com/Shinchanxx" class="footer-link-item">General Support</a>
-                        <a href="https://www.facebook.com/SeereWairaibxy" class="footer-link-item">Contact</a>
-                    </div>
-                    <p class="copyright-txt">© 2026 JUDWADED 2K26. All rights reserved.</p>
                 </div>
             </div>
 
@@ -269,7 +186,7 @@
 
         function startMusic() {
             audio.play().catch(function(error) {
-                console.log("Browser blocked autoplay, waiting for user click.");
+                console.log("Autoplay blocked");
             });
             document.removeEventListener('click', startMusic);
             document.removeEventListener('touchstart', startMusic);
@@ -278,24 +195,25 @@
         document.addEventListener('click', startMusic);
         document.addEventListener('touchstart', startMusic);
 
-        function createParticles() {
-            const container = document.getElementById('fire-container');
-            const particleCount = 25; 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const size = Math.random() * 4 + 2 + 'px';
-                particle.style.width = size;
-                particle.style.height = size;
-                particle.style.left = Math.random() * 100 + 'vw';
-                const duration = Math.random() * 3 + 2 + 's';
+        // ฟังก์ชันสร้างหยดน้ำ
+        function createDrops() {
+            const container = document.getElementById('water-container');
+            const dropCount = 40; 
+            for (let i = 0; i < dropCount; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'drop';
+                const size = Math.random() * 8 + 4 + 'px';
+                drop.style.width = size;
+                drop.style.height = size;
+                drop.style.left = Math.random() * 100 + 'vw';
+                const duration = Math.random() * 2 + 1 + 's';
                 const delay = Math.random() * 5 + 's';
-                particle.style.animationDuration = duration;
-                particle.style.animationDelay = delay;
-                container.appendChild(particle);
+                drop.style.animationDuration = duration;
+                drop.style.animationDelay = delay;
+                container.appendChild(drop);
             }
         }
-        createParticles();
+        createDrops();
     </script>
 </body>
 </html>
