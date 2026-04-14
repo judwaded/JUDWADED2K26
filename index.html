@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUDWADED 2K26 - SONGKRAN EDITION</title>
+    <title>JUDWADED 2K26</title>
     <link rel="icon" type="image/x-icon" href="Logo_JUDWADED.ico">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@900&family=Rajdhani:wght@500&family=Prompt:wght@600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* โทนสีสงกรานต์: ฟ้าคราม และเหลืองดินสอพอง */
             --bg-gradient: linear-gradient(135deg, #00b4db, #0083b0);
             --text-color: #ffffff;
             --sub-text: #e0f7fa;
@@ -29,56 +28,53 @@
             font-family: 'Prompt', 'Inter', sans-serif;
             color: var(--text-color);
             overflow-x: hidden; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* เอฟเฟกต์หยดน้ำร่วงลงมา */
         #water-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .drop { position: absolute; top: -50px; background: rgba(255, 255, 255, 0.6); border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: fall linear infinite; }
-        @keyframes fall { 0% { transform: translateY(0) rotate(45deg); opacity: 0.7; } 100% { transform: translateY(110vh) rotate(45deg); opacity: 0; } }
+        .drop { position: absolute; top: -50px; background: rgba(255, 255, 255, 0.4); border-radius: 0 50% 50% 50%; transform: rotate(45deg); animation: fall linear infinite; }
+        @keyframes fall { 0% { transform: translateY(0) rotate(45deg); opacity: 0.6; } 100% { transform: translateY(110vh) rotate(45deg); opacity: 0; } }
 
         .main-container { 
-            max-width: 1800px; 
-            margin: 0 auto; 
-            padding: 0 20px;
+            width: 100%;
+            max-width: 1200px; 
+            padding: 20px;
             position: relative; 
             z-index: 10; 
         }
 
         .content-wrapper {
             display: flex;
-            justify-content: space-between; 
+            justify-content: space-around; 
             align-items: center;            
-            min-height: 100vh;
             width: 100%;
             gap: 40px; 
-            padding: 40px 0;
-            box-sizing: border-box;
+            flex-wrap: wrap;
         }
 
-        .header-section { flex: 1; }
-
-        .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 85px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; text-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
-        .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 70px); font-weight: 900; margin: 0; line-height: 0.9; color: var(--accent-color); }
+        .header-section { flex: 1; min-width: 300px; }
+        .text-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(40px, 8vw, 80px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; text-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+        .text-year { font-family: 'Orbitron', sans-serif; font-size: clamp(30px, 6vw, 60px); font-weight: 900; margin: 0; line-height: 0.9; color: var(--accent-color); }
         .status-bar { margin-top: 15px; font-family: 'Rajdhani', sans-serif; color: var(--sub-text); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; background: rgba(0,0,0,0.1); display: inline-block; padding: 5px 15px; border-radius: 20px; }
 
-        /* กล่องกลาง */
         .center-box {
             width: 100%;
-            max-width: 600px; 
+            max-width: 550px; 
             background: var(--bar-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 2px solid var(--bar-border);
-            border-radius: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border-radius: 50px;
             padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        /* การจัดการปุ่มให้เท่ากันเป๊ะ */
         .button-group {
             display: flex;
             flex-direction: column;
@@ -92,53 +88,75 @@
             width: 100%;
         }
 
-        .bottom-row {
-            width: 100%;
-        }
-
         .btn {
             background: #ffffff;
             border: none;
             color: #0083b0;
-            padding: 18px 10px;
+            padding: 20px 10px;
             font-family: 'Prompt', sans-serif;
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 800;
             text-transform: uppercase;
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
             text-decoration: none;
-            display: block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            box-sizing: border-box;
-            flex: 1; /* บังคับให้ปุ่มในแถวเดียวกันกว้างเท่ากัน */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            flex: 1;
         }
 
         .btn:hover {
+            transform: scale(1.05);
             background: var(--accent-color);
             color: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
-        /* ปุ่มแถวล่าง (สีชมพู) */
         .btn-large {
-            width: 100%;
             background: #ff4081; 
             color: white;
-            margin-top: 5px;
+            width: 100%;
         }
 
-        @media (max-width: 1100px) { 
-            .content-wrapper { flex-direction: column; text-align: center; justify-content: center; }
-            .header-section { margin-bottom: 30px; }
-            .center-box { padding: 30px 20px; }
+        .footer-inside {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-links-row {
+            margin-bottom: 10px;
+        }
+
+        .footer-link-item {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-link-item:hover { opacity: 1; text-decoration: underline; }
+
+        .copyright-txt {
+            font-size: 12px;
+            margin: 0;
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 900px) { 
+            .content-wrapper { flex-direction: column; text-align: center; }
+            .header-section { margin-bottom: 20px; }
         }
 
         @media (max-width: 480px) {
-            .top-row { flex-direction: column; } /* บนมือถือให้ปุ่มเรียงแถวเดี่ยว */
+            .top-row { flex-direction: column; }
+            .center-box { padding: 30px 20px; border-radius: 35px; }
             .text-brand { font-size: 50px; }
         }
     </style>
@@ -157,7 +175,7 @@
             <header class="header-section">
                 <h1 class="text-brand">SONGKRAN</h1>
                 <h2 class="text-year">JUDWADED 2K26</h2>
-                <div class="status-bar">💦 HAPPY SONGKRAN FESTIVAL 💦</div>
+                <div class="status-bar">💦 HAPPY SONGKRAN สุดทางรักคงต้องพักอีกยาว 💦</div>
             </header>
 
             <div class="center-box">
@@ -170,8 +188,16 @@
                         <a href="watjaistyle.html" class="btn btn-large">WATJAISTYLE</a>
                     </div>
                 </div>
-            </div>
 
+                <div class="footer-inside">
+                    <div class="footer-links-row">
+                        <a href="https://www.facebook.com/Shinchanxx" class="footer-link-item">General Support</a>
+                        <a href="https://www.facebook.com/SeereWairaibxy" class="footer-link-item">Contact</a>
+                    </div>
+                    <p class="copyright-txt">© 2026 JUDWADED 2K26. All rights reserved.</p>
+                </div>
+            </div>
+                
         </div>
     </div>
 
@@ -188,17 +214,16 @@
         document.addEventListener('click', startMusic);
         document.addEventListener('touchstart', startMusic);
 
-        // สร้างหยดน้ำร่วงลงมา
         function createDrops() {
             const container = document.getElementById('water-container');
-            for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 30; i++) {
                 const drop = document.createElement('div');
                 drop.className = 'drop';
-                const size = Math.random() * 7 + 3 + 'px';
+                const size = Math.random() * 8 + 4 + 'px';
                 drop.style.width = size;
                 drop.style.height = size;
                 drop.style.left = Math.random() * 100 + 'vw';
-                drop.style.animationDuration = Math.random() * 2 + 1.5 + 's';
+                drop.style.animationDuration = Math.random() * 2 + 2 + 's';
                 drop.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(drop);
             }
